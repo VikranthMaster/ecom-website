@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+:root {
+    --search-white: #ffffff;
+    --search-dark: #0b0c1a;
+    --search-icon-size: 1.5rem;
+}
+
+.searchbar-container {
+    position: relative;
+    height: 48px;
+    background-color: var(--search-white);
+    border-radius: 2.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    transition: width 0.4s ease-in-out;
+    width: 76px;
+    /* collapsed default */
+}
+
+.searchbar-container.show-search {
+    width: 100%;
+    max-width: 450px;
+}
+
+.searchbar-input {
+    border: none;
+    outline: none;
+    width: 100%;
+    padding-left: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+    background: transparent;
+}
+
+.searchbar-container.show-search .searchbar-input {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.searchbar-button {
+    width: 48px;
+    height: 48px;
+    background-color: var(--search-dark);
+    border-radius: 50%;
+    color: var(--search-white);
+    font-size: var(--search-icon-size);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    z-index: 1;
+    margin-left: auto;
+}
+
+.searchbar-icon,
+.searchbar-close {
+    position: absolute;
+    right: 20px;
+    font-size: var(--search-icon-size);
+    color: var(--search-white);
+    transition: opacity 0.3s ease-in-out;
+}
+
+.searchbar-close {
+    opacity: 0;
+}
+
+.searchbar-container.show-search .searchbar-icon {
+    opacity: 0;
+}
+
+.searchbar-container.show-search .searchbar-close {
+    opacity: 1;
+}
+
+@media (min-width: 768px) {
+    .searchbar-container {
+        width: 100%;
+        max-width: 450px;
+    }
+
+    .searchbar-input {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .searchbar-button {
+        display: none;
+    }
+}
